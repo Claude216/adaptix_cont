@@ -1,0 +1,33 @@
+[package]
+name = "draftretriever"
+version = "0.1.0"
+edition = "2021"
+
+
+
+[lib]
+name = "draftretriever"
+crate-type = ["cdylib"]
+
+[dependencies]
+rand = "*"
+bstr = "0.2"
+byteorder = "1"
+memchr = "2"
+parking_lot = "0.12"
+rayon = "1"
+bincode = "*"
+cached = "*"
+
+[dependencies.pyo3]
+version = "0.17.0"
+features = ["extension-module"]
+
+[build-dependencies]
+cc = { version = "1.0", features = ["parallel"] }
+
+[profile.release]
+lto = true
+panic = "abort"
+codegen-units = 1
+strip = true

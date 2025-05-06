@@ -2,7 +2,6 @@
 
 *.json
 
-Adaptix/
-
+Adaptix_o/*
 
 test.ipynb
