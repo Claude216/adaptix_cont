@@ -72,12 +72,22 @@ if dataset_path == 'ShareGPT_V4.3_unfiltered_cleaned_split.json': ## MODIFIED
         for sample in conversations['conversations']:
             token_list = tokenizer.encode(sample['value'])
             writer.add_entry(token_list)
-else: ## MODIFIED # for the fin corpus
+            
+elif "fin_datas" in dataset_path:  ## MODIFIED # for the fin corpus
     for fin_file in tqdm(dataset, total=total_length): 
         for key, val in fin_file.items(): 
             if key.startswith("section"): 
                 token_list = tokenizer.encode(val)
                 writer.add_entry(token_list)
+
+elif "med_datas" in dataset_path: 
+    for conversations in tqdm(dataset, total=total_length):
+        for sample in conversations['conversations']:
+            token_list = tokenizer.encode(sample['value'])
+            writer.add_entry(token_list)
+
+else: 
+    print("Error: Unrecognized dataset path!")
 
 writer.finalize()
 

@@ -5,3 +5,9 @@
 Adaptix_o/*
 
 test.ipynb
+
+*.zip
+*.jsonl
+
+*fin_datas/*
+*med_datas/*
